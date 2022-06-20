@@ -1,0 +1,625 @@
+                         Svelte JS Components
+
+                         <!--section (1-4) -->
+                   
+<!-- CompOne -->
+<script>
+    export let username;
+    export let jobTitle;
+    export let description;
+    export let userImage;
+    const initialName = username;
+  
+</script>
+<style>
+    .contact-card {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+      max-width: 30rem;
+      border-radius: 5px;
+      margin: 1rem 0;
+    }
+  
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 7rem;
+    }
+  
+    .thumb {
+      width: 33%;
+      height: 100%;
+    }
+
+    .thumb-placeholder
+    {
+        background-color: #ccc;
+    }
+  
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  
+    .user-data {
+      width: 67%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  
+    h1 {
+      font-size: 1.25rem;
+      font-family: "Roboto Slab", sans-serif;
+      margin: 0.5rem 0;
+    }
+  
+    h2 {
+      font-size: 1rem;
+      font-weight: normal;
+      color: #5a5a5a;
+      margin: 0;
+      margin-bottom: 0.5rem;
+    }
+  
+    .description {
+      border-top: 1px solid #ccc;
+      padding: 1rem;
+    }
+
+  </style>
+
+  <div class="contact-card">
+    <header>
+      <!--<div class="{userImage ? 'thumb' : ' thumb thumb-placeholder'}">-->
+      <div class="thumb" class:thumb-placeholder={!userImage}>
+        <img src="{userImage}" alt="" />
+      </div>
+      <div class="user-data">
+        <h1>{username} / {initialName}</h1>
+        <h2>{jobTitle}</h2>
+      </div>
+    </header>
+    <div class="description">
+      <p>{@html description}</p>
+    </div>
+  </div>
+
+
+<!-- PracticeAsg -->
+
+<script>
+export let course;
+</script>
+
+<style>
+   
+   .exclamation
+    {
+        color:red;
+    }
+
+    .none
+    {
+        color: black;
+    }
+
+</style>
+
+<!--<h1 class={course.includes('!') ? 'exclamation' : 'none'}>{course}</h1>-->
+<h1 class:exclamation={course.includes('!')}>{course}</h1>
+
+
+                               <!-- section 5 -->
+
+<!-- Meetups.svelte -->
+<script>
+
+//import Buttons from './Ui/button.svelte';
+
+     export let title;
+     export let subtitle;
+     export let description;
+     export let imageUrl;
+     export let address;
+     export let contactEmail;
+     //export let id;
+
+
+</script>
+<style>
+    article {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+      border-radius: 5px;
+      background: white;
+      margin: 1rem;
+    }
+  
+    header,
+    .content,
+    footer {
+      padding: 1rem;
+    }
+  
+    .image {
+      width: 100%;
+      height: 14rem;
+    }
+  
+    .image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  
+    h1 {
+      font-size: 1.25rem;
+      margin: 0.5rem 0;
+      font-family: "Roboto Slab", sans-serif;
+    }
+  /* 
+    h1.is-favorite {
+      background: #01a129;
+      color: white;
+      padding: 0 0.5rem;
+      border-radius: 5px;
+    } */
+  
+    h2 {
+      font-size: 1rem;
+      color: #808080;
+      margin: 0.5rem 0;
+    }
+  
+    p {
+      font-size: 1.25rem;
+      margin: 0;
+    }
+  
+    div {
+      text-align: right;
+    }
+
+    .content
+    {
+      height: 4rem;
+      
+    }
+    
+  </style>
+  
+  <article>
+    <header>
+      <h1>{title}</h1>
+      <h2>{subtitle}</h2>
+      <h2>{address}</h2>
+    </header>
+    <div class="image">
+      <img src="{imageUrl}" alt="" />
+    </div>
+    <div class="content">
+      <p>{description}</p>
+    </div>
+    <footer>
+      <a href="mailto:{contactEmail}"> Contact </a>
+      <button>Show Details</button>
+      <button>Favourite</button>
+      
+    </footer>
+  </article>
+  
+<!-- button.svelte -->
+<script>
+
+  export let type;
+  export let caption;
+  export let href;
+  export let mode;
+
+</script>
+
+<style>
+    button,
+a {
+  font: inherit;
+  border: 1px solid #cf0056;
+  background: #cf0056;
+  padding: 0.5rem 1rem;
+  color: white;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.26);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:hover,
+button:active,
+a:hover,
+a:active {
+  background: #e40763;
+  border-color: #e40763;
+  box-shadow: 1px 1px 8px rgba(77, 51, 51, 0.26);
+}
+
+button:disabled,
+button:disabled:hover,
+button:disabled:active {
+  background: #ccc;
+  border-color: #ccc;
+  color: #959595;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.success {
+  background: #01a129;
+  border-color: #01a129;
+}
+
+.success:hover,
+.success:active {
+  background: #1ac745;
+  border-color: #1ac745;
+}
+
+.outline {
+  background: transparent;
+  color: #cf0056;
+  box-shadow: none;
+}
+
+.outline:hover,
+.outline:active {
+  background: #ffc7de;
+  box-shadow: none;
+}
+
+.outline:disabled,
+.outline:disabled:hover,
+.outline:disabled:active {
+  background: transparent;
+  color: #ccc;
+}
+
+.outline.success {
+  border-color: #01a129;
+  color: #01a129;
+}
+
+.outline.success:hover,
+.outline.success:active {
+  background: #c2ffd1;
+}
+
+</style>
+
+
+{#if href}
+  <a {href}>{caption}</a>
+{:else}
+  <button class="{mode}" {type}>{caption}</button>
+{/if}
+
+
+<!-- header.svelte -->
+<script>
+
+  export let type;
+  export let caption;
+  export let href;
+  export let mode;
+
+</script>
+
+<style>
+    button,
+a {
+  font: inherit;
+  border: 1px solid #cf0056;
+  background: #cf0056;
+  padding: 0.5rem 1rem;
+  color: white;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.26);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:hover,
+button:active,
+a:hover,
+a:active {
+  background: #e40763;
+  border-color: #e40763;
+  box-shadow: 1px 1px 8px rgba(77, 51, 51, 0.26);
+}
+
+button:disabled,
+button:disabled:hover,
+button:disabled:active {
+  background: #ccc;
+  border-color: #ccc;
+  color: #959595;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.success {
+  background: #01a129;
+  border-color: #01a129;
+}
+
+.success:hover,
+.success:active {
+  background: #1ac745;
+  border-color: #1ac745;
+}
+
+.outline {
+  background: transparent;
+  color: #cf0056;
+  box-shadow: none;
+}
+
+.outline:hover,
+.outline:active {
+  background: #ffc7de;
+  box-shadow: none;
+}
+
+.outline:disabled,
+.outline:disabled:hover,
+.outline:disabled:active {
+  background: transparent;
+  color: #ccc;
+}
+
+.outline.success {
+  border-color: #01a129;
+  color: #01a129;
+}
+
+.outline.success:hover,
+.outline.success:active {
+  background: #c2ffd1;
+}
+
+</style>
+
+
+{#if href}
+  <a {href}>{caption}</a>
+{:else}
+  <button class="{mode}" {type}>{caption}</button>
+{/if}
+
+
+<!-- textInput.svelte -->
+<script>
+   export let controlType;
+   export let id;
+   export let label;
+   export let rows;
+   export let value;
+   export let type;
+</script>
+
+<style>
+
+input,
+textarea {
+  display: block;
+  width: 100%;
+  font: inherit;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  border-radius: 3px 3px 0 0;
+  background: white;
+  padding: 0.15rem 0.25rem;
+  transition: border-color 0.1s ease-out;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #e40763;
+  outline: none;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  width: 100%;
+}
+
+.form-control {
+  padding: 0.5rem 0;
+  width: 100%;
+  margin: 0.25rem 0;
+}
+
+
+</style>
+<div class="form-control">
+    <label for="description">{label}</label>
+    {#if controlType==='textarea'}
+     <textarea rows="{rows}" id="{id}" value={value} on:input></textarea>
+    {:else}
+     <input type="{type}" id="{id}"  value={value} on:input />
+    {/if}
+</div>
+
+
+                               <!-- section 6 -->
+
+<!-- product.svelte -->
+<script>
+    import {createEventDispatcher} from 'svelte';
+    export let product;
+
+    const dispatcher = createEventDispatcher();
+
+    function add()
+    {
+         dispatcher('add-to-cart' , { id : 'p1'});
+    }
+
+    function view()
+    {
+        dispatcher( 'view-cart' , { id : 'p2'});
+    }
+
+    function Edit()
+    {
+        dispatcher( 'editCart' , {id : 'p2'});
+    }
+
+</script>
+<style>
+
+</style>
+
+<h1>{product}</h1>
+<button on:click={add}>Add to cart</button>
+<button on:click={ () => { dispatcher ('delete' , 'p1')} }>Delete</button>
+<button on:click={view}>View Cart</button>
+<button on:click={Edit}>Edit Cart</button>
+<button on:click={ () => { dispatcher('DeleteAll' , 'p2')} }>Delete All</button>
+
+<!--modal.svelte-->
+<script>
+
+  import { createEventDispatcher, onMount, onDestroy, beforeUpdate, afterUpdate } from 'svelte';
+  let dispatcher = createEventDispatcher();
+  let agreed = false;
+  let autoscroll = false;
+  
+
+ onMount ( () =>
+  {
+    console.log("Mounted");
+  })
+
+  onDestroy( () =>
+  {
+    console.log("Destroyed");
+  })
+
+  beforeUpdate( () => 
+  {
+    console.log("before Update");
+    autoscroll = agreed;
+  })
+
+  afterUpdate( () =>
+  {
+    console.log("After Update");
+    if (autoscroll)
+    {
+      const modal = document.querySelector( '.modal ');
+      modal.scroll(0 , modal.scrollHeight);
+    }
+  })
+
+  console.log("script executed");
+</script>
+<style>
+    .backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 10;
+}
+
+.modal {
+  position: fixed;
+  top: 10vh;
+  left: 10%;
+  width: 80%;
+  max-height: 80vh;
+  background: white;
+  border-radius: 5px;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  overflow: scroll;
+  max-height: 20vh;
+}
+
+.disclaimer
+{
+  background-color: bisque;
+}
+
+button{
+  background-color: white;
+  color: black;
+  border-color: white;
+}
+
+</style>
+
+<div class="backdrop" on:click="{ () => { dispatcher( 'cancel')}}">
+
+</div>
+<div class="modal">
+    <div style="background-color:royalblue">
+      <slot name="NamedSlot"/>
+    </div>
+    <div style="background-color:aquamarine">
+      <slot />
+      <div class="disclaimer">
+         <button on:click="{ () => agreed = true }">Agree</button>
+      </div>
+      <slot name="defaultt">
+        <button on:click={ () => dispatcher( 'close' , 'p1') } disabled={!agreed}>
+          Close
+        </button>
+      </slot>
+    </div>
+</div>
+
+
+            <!-- section 8 -->
+<!-- comp 1 -->
+
+<script>
+    export let choosenOption;
+</script>
+
+<button on:click="{ () => choosenOption = 1 }">
+   Option 1
+</button>
+
+<button on:click="{ () => choosenOption = 2}">
+    Option 2
+</button>
+
+<!-- comp 2 -->
+<script>
+    export let value;
+    export function empty()
+    {
+        value = 'ooo molarka';
+    }
+</script>
+
+<input type="text" bind:value>
+
+<!-- comp 3 -->
+
+export function isValidEmail(val) {
+    return val.includes('@');
+}
+
+      
