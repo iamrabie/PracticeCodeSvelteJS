@@ -1,0 +1,5 @@
+ $: if (isValidEmail(enteredEmail)) {
+    formIsValid = true;
+  } else {
+    formIsValid = false;
+  }
